@@ -7,7 +7,7 @@ Brings CLI to web by executing high level mash-up commands for common services.
 
 Clone repository, then install Python interpreter, `virtualenv` and its wrapper:
 ```bash
-git clone git@github.com:cmin764/coliw.git
+git@github.com:qxZap/Coliw.git
 cd coliw
 
 sudo apt-get update && sudo apt-get install --upgrade python python-dev python-setuptools
@@ -58,7 +58,7 @@ deactivate
 
 ----
 
-* Homepage: No deploy yet
+* Homepage: http://ec2-18-222-71-28.us-east-2.compute.amazonaws.com:1337/
 * Documentation: No documentation yet
 * Source: https://github.com/qxZap/coliw.git
 * License: MIT
