@@ -58,10 +58,13 @@ deactivate
 
 ----
 
-* Homepage: http://coliw.herokuapp.com/
-* Documentation: http://coliw.readthedocs.io/en/latest/
-* Source: https://github.com/cmin764/coliw.git
+* Homepage: No deploy yet
+* Documentation: No documentation yet
+* Source: https://github.com/qxZap/coliw.git
 * License: MIT
 * Authors:
-  + Cosmin Poieana <cosmin.poieana@info.uaic.ro>
-  + Corneliu Tamas <corneliu.tamas@info.uaic.ro>
+  + Cosmin Poieana <cosmin.poieana@info.uaic.ro> //2 years ago in relese of 2.0
+  + Corneliu Tamas <corneliu.tamas@info.uaic.ro> //2 years ago in relese of 2.0
+  + Milea Mihai-Cristian <mihai.milea@info.uaic.ro> //currently working on
+  + Gabriela Macovei <gabriela.macovrei@info.uaic.ro> //currently working on
+  + Roibu Radu <radu.roibu@info.uaic.ro> //currenty working on
