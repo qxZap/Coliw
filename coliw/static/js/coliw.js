@@ -5,7 +5,7 @@ var H_LIST = [];
 var H_IDX = -1;
 
 var ERROR = {
-    10: "Parsing error",
+    10: "Error parsing arguments",
     20: "Execution error",
     1: "Unknown error",
 };
@@ -96,6 +96,9 @@ function handle_response(code, response) {
 }
 
 
+
+
+
 function upload_history() {
     var text = $("#cli-history").text();
     var req = $.ajax({
@@ -143,7 +146,8 @@ function loadall() {
     });
 
     // Send commands to the server and show output.
-    $("#cli-entry").keydown(function (event) {
+    $("#cli-entry").keydown(function (event) 
+    {
         if (!event) {
             event = window.event;
         }
@@ -152,7 +156,10 @@ function loadall() {
             key = event.charCode;
         }
 
-        if (key == 13) {
+        if (key == 13) 
+	{
+	                
+
             // Enter.
             var cmd = $(this).val();
             $(this).val("");

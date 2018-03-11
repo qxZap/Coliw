@@ -7,7 +7,7 @@ Brings CLI to web by executing high level mash-up commands for common services.
 
 Clone repository, then install Python interpreter, `virtualenv` and its wrapper:
 ```bash
-git@github.com:qxZap/Coliw.git
+git clone git@github.com:cmin764/coliw.git
 cd coliw
 
 sudo apt-get update && sudo apt-get install --upgrade python python-dev python-setuptools
@@ -58,13 +58,10 @@ deactivate
 
 ----
 
-* Homepage: http://ec2-18-222-71-28.us-east-2.compute.amazonaws.com:1337/
-* Documentation: No documentation yet
-* Source: https://github.com/qxZap/coliw.git
+* Homepage: http://coliw.herokuapp.com/
+* Documentation: http://coliw.readthedocs.io/en/latest/
+* Source: https://github.com/cmin764/coliw.git
 * License: MIT
 * Authors:
-  + Cosmin Poieana <cosmin.poieana@info.uaic.ro> //2 years ago in relese of 2.0
-  + Corneliu Tamas <corneliu.tamas@info.uaic.ro> //2 years ago in relese of 2.0
-  + Milea Mihai-Cristian <mihai.milea@info.uaic.ro> //currently working on
-  + Gabriela Macovei <gabriela.macovrei@info.uaic.ro> //currently working on
-  + Roibu Radu <radu.roibu@info.uaic.ro> //currenty working on
+  + Cosmin Poieana <cosmin.poieana@info.uaic.ro>
+  + Corneliu Tamas <corneliu.tamas@info.uaic.ro>
