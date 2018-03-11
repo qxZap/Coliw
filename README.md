@@ -58,7 +58,7 @@ deactivate
 
 ----
 
-* Homepage: http://ec2-18-222-71-28.us-east-2.compute.amazonaws.com:1337/
+* Homepage: http://zapzilla.zapto.org:1337/
 * Documentation: No documentation yet
 * Source: https://github.com/qxZap/coliw.git
 * License: MIT
