@@ -63,15 +63,6 @@ button,input,textarea {
 	clip:rect(0,0,0,0);
 	border:0;
 }
-h1 {
-	font-family:inherit;
-	font-weight:500;
-	line-height:1.1;
-	color:inherit;
-	margin-top:20px;
-	margin-bottom:10px;
-	font-size:36px;
-}
 .text-center {
 	text-align:center;
 }
