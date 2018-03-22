@@ -265,13 +265,6 @@ textarea.form-control {
 	background-color:#d9edf7;
 	border-color:#bce8f1;
 }
-.container:after,.container:before,.row:after,.row:before {
-	display:table;
-	content:" ";
-}
-.container:after,.row:after {
-	clear:both;
-}
 .pull-right {
 	float:right;
 }
