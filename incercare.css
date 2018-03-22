@@ -66,7 +66,7 @@ button,input,textarea {
 	margin:-1px;
 	overflow:hidden;
 	clip:rect(0,0,0,0);
-	border:0;
+	border:2px;
 }
 .text-center {
 	text-align:center;
@@ -273,6 +273,11 @@ textarea.form-control {
 	color:#808000;
 	background-color:#ffff99;
 	border-color:#ffffe6;
+}
+.alert-success {
+	color:green;
+	background-color:#99ff99;
+	border-color:#006600;
 }
 .pull-right {
 	float:right;
