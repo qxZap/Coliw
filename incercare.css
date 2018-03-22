@@ -264,6 +264,16 @@ textarea.form-control {
 	background-color:#d9edf7;
 	border-color:#bce8f1;
 }
+.alert-error {
+	color:red;
+	background-color:#ff9999;
+	border-color:#ffb3b3;
+}
+.alert-loading {
+	color:#808000;
+	background-color:#ffff99;
+	border-color:#ffffe6;
+}
 .pull-right {
 	float:right;
 }
