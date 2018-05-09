@@ -26,11 +26,12 @@ Coliw va fi impartita in doua mari module:
 		indiferent  de complexitate, si va avea grija sa furnizeze un raspuns relevant
 		interfetei, astfel incat sa nu apara erori de comunicare intre front-end si back-end, 
 		pentru a clarifica daca executia a avut loc sau nu.
+		Partea de back-end cuprinde:
 		
 			a. Un server-core (Python) care va primi comanda de la front-end si va cauta intr-un
 			director de Views pentru a determina tipul de executie necesara.
 			
-			b. Un set de views care in urma interpretari va face executia comenzii dorite.
+			b. Un set de views care, in urma interpretarii, va face executia comenzii dorite.
 			
 			c. O baza de date MySql pentru a stoca utilizatorii (acestia vor avea comanda de 
 			login si de register.
