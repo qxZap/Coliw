@@ -7,18 +7,17 @@ interpretarea corecta si sa suporta inlantuiri de comenzi si pipe-uri ce
 vor duce la efectul dorit in urma executiei lor, lasand afisat in istoricul
 interfetei un output relevant.
 
-Aplicatia va folosi tehnologiile Python (Flask, Jinja, peewee), HTML5,
-CSS/Bootstrap, js/jQuery si SQLite si va fi impartita in doua mari module:
+Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
+Coliw va fi impartita in doua mari module:
 
-    1. Interfata (front-end) ce va fi o consola dinamica ce va cuprinde doua
-       ferestre in raport de 5:1 pentru istoric, respectiv campul de comenzi.
-       Ea va putea prelua comenzi de la utilizator, le va executa la apasarea
-       tastei <Enter>, comunicand cu API-ul (back-end), iar in urma raspunsului
-       dat de acesta, va afisa un text de iesire relevant pe ecran, in urma
-       obtinerii efectului dorit de catre respectiva comanda.
-       Interfata va suporta nivelul minim de interactiuni similare oricari
-       console (ex.: arrow-up/down pentru rasfoirea in comenzi recente;
-       scroll: pentru a naviga prin istoricul de comenzi etc.)
+    1. Interfata (front-end) ce va fi o consola statica, cuprinzand tot
+       ecranul, ce ca trimite comenzi catre un API (back-end) atunci cand 
+       este apasata tasta <Enter>. In urma raspunsului se va afisa  pe ecran
+       un text de iesire relevant primit de la server, ca raspuns la comanda
+       introdusa.
+       Interfata va suporta interactiuni similare oricarei console 
+       (ex.: arrow-up/down pentru rasfoirea in comenzile precedente si
+       scroll: pentru a naviga prin istoricul de comenzi).
 
     2. API (back-end) ce va fi responsabil pentru primirea comenzii si de
        asemenea, executia ei. Va garanta obtinerea efectului dorit in urma
