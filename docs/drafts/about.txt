@@ -1,33 +1,38 @@
-CoLiW este o simpla aplicatie web conceputa sa preia siruri de caractere
-introduse in interfata (front-end) capabila sa paseze mai departe sirul 
-introdus de client catre partea de back-end care va parsa (printr-un parser
-custom), analiza si procesa respectivul sir de caractere sub forma unei 
-sintaxe de comanda ce suporta comenzi mutiple. Aplicatia are ca scop 
-interpretarea corecta si sa suporta inlantuiri de comenzi si pipe-uri ce 
-vor duce la efectul dorit in urma executiei lor, lasand afisat in istoricul
-interfetei un output relevant.
+Coliw este o aplicatie web conceputa sa preia siruri de caractere introduse in interfata (front-end) capabila sa paseze
+mai departe sirul introdus de client catre partea de back-end care va parsa (printr-un parser custom), analiza si procesa
+respectivul sir de caractere sub forma unei sintaxe in linia de comanda ce va suporta comenzi multiple.
+Scopul aplicatiei este sa interpreteze corect si sa suporte inlantuiri de comenzi si pipe-uri ce vor duce la efectul dorit
+in urma executiei lor, lasand afisar in istoricul interfetei un output relevant.
 
 Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
-Coliw va fi impartita in doua mari module:
+Aplicatia va fi impartita in doua mari module:
 
-    1. Interfata (front-end) ce va fi o consola statica, cuprinzand tot
-       ecranul, ce ca trimite comenzi catre un API (back-end) atunci cand 
-       este apasata tasta <Enter>. In urma raspunsului se va afisa  pe ecran
-       un text de iesire relevant primit de la server, ca raspuns la comanda
-       introdusa.
-       Interfata va suporta interactiuni similare oricarei console 
-       (ex.: arrow-up/down pentru rasfoirea in comenzile precedente si
-       scroll: pentru a naviga prin istoricul de comenzi).
-
-    2. API (back-end) ce va fi responsabil pentru primirea comenzii si de
-       asemenea, executia ei. Va garanta obtinerea efectului dorit in urma
-       executiei respectivelor comenzi, indiferent de complexitate si va avea
-       grija sa furnizeze un raspuns relevant interfetei indiferent daca
-       executia a avut loc cu succes sau nu.
-
-        a. Un set de Views ce vor interpreta rutele inregistrare si vor delega
-           comanda unei biblioteci special desemnata pentru procesarea ei.
-           Va intoarce un template html populat de rezultat.
-        b. Un set de Models pentru stocarea datelor: User
-        c. Un set de Forms pentru afisarea de campuri in interfata si salvarea
-           intrarilor utilizatorilor in modele.
+	1. 		Interfata (front-end) ce va fi o consola statica cuprinsa pe tot ecranul
+		ce va trimite comenzi catre API-ul (back-end) atunci cand este apasata tasta
+		<Enter>. In urma raspunsului se va afisa pe ecran raspunsul primit de la server
+		ca si raspuns la comanda introdusa.
+		
+			Interfata va suporta interactiuni similare oricarei console (ex: arrow-up/down
+		pentru rasfoirea in comenzile precedente si scroll pentru a naviga in istoric )
+		
+			Deasemenea interfata va dispune si de o sumedenie de culori pentru a-i indica
+		utilizatorului starea curenta a aplicatiei catre utilizator (Scrisul va fi default 
+		in culoarea verde. Atunci cand serverul va trimite o eroare aceasta va fi afisata
+		cu culoarea rosie.)
+		
+		
+	2.		API-ul (back-end) ce va fi responsabil cu primirea unei comenzi si de asemenea
+		executia ei. Acesta componenta va garanta obtinerea efectului dorit in urma executiei
+		respectivelor comenzi, indiferent  de complexitate si va avea grija sa furnizeze un
+		raspuns relevant interfetei, astfel incat sa nu apara erori de comunicare intre
+		front-end si back-end, pentru a clarifica daca executia a avut loc sau nu.
+		
+			a. Un server-core (Python) care va primi comanda de la front-end si va cauta intr-un
+			director de Views pentru a determina tipul de executie necesara.
+			
+			b. Un set de views care in urma interpretari va face executia comenzii dorite.
+			
+			c. O baza de date MySql pentru a stoca utilizatorii (acestia vor avea comanda de 
+			login si de register.
+			
+			d. Un modul Storage pentru a inregistra istoricul utilizatorului.
