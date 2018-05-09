@@ -5,7 +5,7 @@ Scopul aplicatiei este sa interpreteze corect si sa suporte inlantuiri de comenz
 in urma executiei lor, lasand afisar in istoricul interfetei un output relevant.
 
 Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
-Aplicatia va fi impartita in doua mari module:
+Coliw va fi impartita in doua mari module:
 
 	1. 		Interfata (front-end) ce va fi o consola statica cuprinsa pe tot ecranul
 		ce va trimite comenzi catre API-ul (back-end) atunci cand este apasata tasta
