@@ -60,6 +60,7 @@ Coliw va fi impartita in doua mari module:
 						>> user : pe profilul utilizatorului
 						>> story : pe story
 					> follow : acesta va da follow unui alte pagine
+					> unfollow : acesta va da unfollow unei alte pagine
 				-wordpress :  va realiza comenzi in cadrul wordpress
 					> public : pentru a publica pe un blog
 					> -as HTMl : pentru a specifica formatul
