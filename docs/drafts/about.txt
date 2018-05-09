@@ -21,7 +21,7 @@ Coliw va fi impartita in doua mari module:
 		cu culoarea rosie.)
 		
 		
-	2.		API-ul (back-end) ce va fi responsabil cu primirea unei comenzi si de asemenea
+2.		API-ul (back-end) ce va fi responsabil cu primirea unei comenzi si de asemenea
 		executia ei. Acesta componenta va garanta obtinerea efectului dorit in urma executiei
 		respectivelor comenzi, indiferent  de complexitate si va avea grija sa furnizeze un
 		raspuns relevant interfetei, astfel incat sa nu apara erori de comunicare intre
@@ -62,4 +62,8 @@ Coliw va fi impartita in doua mari module:
 				-wordpress :  va realiza comenzi in cadrul wordpress
 					> public : pentru a publica pe un blog
 					> -as HTMl : pentru a specifica formatul
+						
+			f. Un modul de utilizare a fisierelor pentru utilizatorii cu cont. Utilizatorii fara
+			cont nu vor avea acces la utilizarea fisierelor si comenzile care implica aces caz
+			vor fi alarmate catre utilizator cu o eroare
 						
