@@ -4,7 +4,7 @@ respectivul sir de caractere sub forma unei sintaxe in linia de comanda ce va su
 Aplicatia are ca scop interpretarea corecta si suporta inlantuiri de comenzi si pipe-uri ce vor duce la efectul dorit
 in urma executiei lor, lasand afisat, in istoricul interfetei, un output relevant.
 
-Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
+Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySQL.
 Coliw va fi impartita in doua mari module:
 
 	1. 		Interfata (front-end) ce va fi o consola statica, cuprinzand tot ecranul,
@@ -33,7 +33,7 @@ Coliw va fi impartita in doua mari module:
 			
 			b. Un set de views care, in urma interpretarii, va face executia comenzii dorite.
 			
-			c. O baza de date MySql pentru a stoca utilizatorii (acestia vor avea comanda de 
+			c. O baza de date MySQL pentru a stoca utilizatorii (acestia vor avea comanda de 
 			login si de register.
 			
 			d. Un modul Storage pentru a inregistra istoricul utilizatorului.
