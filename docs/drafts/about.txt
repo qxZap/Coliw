@@ -57,19 +57,19 @@ Coliw va fi impartita in doua mari module:
 					> -tag     : pentru a cauta tag-uri cu un anumit nume
 					> -since   : pentru a determina incepand cu ce data sa caute
 				- flickr     : va realiza comenzi in cadrul flickr
-					> -tag     : acesta va cauta poza dupa un anumit tag
+					> -tag     : va cauta poza dupa un anumit tag
 					> -first   : pentru a lua prima cautare
 				- instagram  : va realiza comenzi in cadrul instagram
-					> update   : acesta va face update pe instagram
-						>> user : pe profilul utilizatorului
+					> update   : va posta fotografii pe instagram
+						>> user  : pe profilul utilizatorului
 						>> story : pe story
-					> follow : acesta va da follow unui alte pagine
-					> unfollow : acesta va da unfollow unei alte pagine
-				-wordpress :  va realiza comenzi in cadrul wordpress
-					> public : pentru a publica pe un blog
+					> follow   : acesta va da follow unei alte pagini/unui alt utilizator
+					> unfollow : acesta va da unfollow unei alte pagini/unui alt utilizator
+				-wordpress   :  va realiza comenzi in cadrul wordpress
+					> public   : pentru a publica pe un blog
 					> -as HTMl : pentru a specifica formatul
 						
 			f. Un modul de utilizare a fisierelor pentru utilizatorii cu cont. Utilizatorii fara
-			cont nu vor avea acces la utilizarea fisierelor si comenzile care implica aces caz
-			vor fi alarmate catre utilizator cu o eroare
+			cont nu vor avea acces la utilizarea fisierelor, iar comenzile care implica acest caz
+			vor fi aduse in atentia utilizatorului printr-o eroare.
 						
