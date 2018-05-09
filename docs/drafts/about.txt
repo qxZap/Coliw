@@ -1,11 +1,11 @@
 Coliw este o aplicatie web conceputa sa preia siruri de caractere introduse in interfata (front-end) capabila sa paseze
 mai departe sirul introdus de client catre partea de back-end care va parsa (printr-un parser custom), analiza si procesa
 respectivul sir de caractere sub forma unei sintaxe in linia de comanda ce va suporta comenzi multiple.
-Scopul aplicatiei este sa interpreteze corect si sa suporte inlantuiri de comenzi si pipe-uri ce vor duce la rezultatul dorit
+Scopul aplicatiei este sa interpreteze corect si sa suporte inlantuiri de comenzi si pipe-uri ce vor duce la efectul dorit
 in urma executiei lor, lasand afisar in istoricul interfetei un output relevant.
 
 Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
-Coliw va fi impartita in doua mari module:
+Aplicatia va fi impartita in doua mari module:
 
 	1. 		Interfata (front-end) ce va fi o consola statica cuprinsa pe tot ecranul
 		ce va trimite comenzi catre API-ul (back-end) atunci cand este apasata tasta
@@ -36,3 +36,30 @@ Coliw va fi impartita in doua mari module:
 			login si de register.
 			
 			d. Un modul Storage pentru a inregistra istoricul utilizatorului.
+			
+			e. Un sub-view numit Web care va fi un alt View care se va ocupa de comenzile in
+			ceea ce priveste activitatea web
+			
+				-slideshare : care va permite deschiderea prin server a unui fisier local/extern
+				fata de utilizator
+					> upload : pentru a deschide ceva din computerul utilizatorului prin server
+					> external : pentru a deschide ceva in functie de url
+				
+				-twitter : acesta va realiza comenzi in cadrul twiiter
+					> follow : si va da follow unui utilizator
+					> unfollow : si va da unfollow unui utilizator
+					> tweet : si va aduga un nou tweet
+				-gmail : va realiza comenzi in cadrul gmail
+					> -tag : pentru a cauta tag-uri cu un anumit nume
+					> -since : pentru a determia data de cand sa caute
+				-flickr : va realiza comenzi in cadrul flickr
+					> photos : acesta va cauta poza dupa un anumit tag
+					> -first : pentru a lua prima cautare
+				-instagram : va realiza comenzi in cadrul instagram
+					> update : acesta va face update pe instagram
+						>> user : pe profilul utilizatorului
+						>> story : pe story
+				-wordpress :  va realiza comenzi in cadrul wordpress
+					> public : pentru a publica pe un blog
+					> -as HTMl : pentru a specifica formatul
+						
