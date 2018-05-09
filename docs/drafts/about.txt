@@ -10,22 +10,22 @@ Coliw va fi impartita in doua mari module:
 	1. 		Interfata (front-end) ce va fi o consola statica, cuprinzand tot ecranul,
 		ce va trimite comenzi catre un API (back-end) atunci cand este apasata tasta
 		<Enter>. In urma raspunsului se va afisa pe ecran un text de iesire relevant primit 
-		de la server, ca si raspuns la comanda introdusa.
+		de la server, ca raspuns la comanda introdusa.
 		
 			Interfata va suporta interactiuni similare oricarei console (ex: arrow-up/down
-		pentru rasfoirea in comenzile precedente si scroll pentru a naviga in istoric )
+		pentru rasfoirea in comenzile precedente si scroll pentru a naviga in istoricul de comenzi).
 		
-			Deasemenea interfata va dispune si de o sumedenie de culori pentru a-i indica
-		utilizatorului starea curenta a aplicatiei catre utilizator (Scrisul va fi default 
-		in culoarea verde. Atunci cand serverul va trimite o eroare aceasta va fi afisata
+			De asemenea, interfata va dispune si de o varietate de culori pentru a-i indica
+		utilizatorului starea curenta a aplicatiei. (Scrisul va fi, by default,
+		de culoare verde. Atunci cand serverul va trimite o eroare aceasta va fi afisata
 		cu culoarea rosie.)
 		
 		
-2.		API-ul (back-end) ce va fi responsabil cu primirea unei comenzi si de asemenea
-		executia ei. Acesta componenta va garanta obtinerea efectului dorit in urma executiei
-		respectivelor comenzi, indiferent  de complexitate si va avea grija sa furnizeze un
-		raspuns relevant interfetei, astfel incat sa nu apara erori de comunicare intre
-		front-end si back-end, pentru a clarifica daca executia a avut loc sau nu.
+2.		API-ul (back-end) va fi responsabil cu primirea unei comenzi si, de asemenea, cu executia ei.
+		Acesta componenta va garanta obtinerea efectului dorit in urma executiei comenzilor date, 
+		indiferent  de complexitate, si va avea grija sa furnizeze un raspuns relevant
+		interfetei, astfel incat sa nu apara erori de comunicare intre front-end si back-end, 
+		pentru a clarifica daca executia a avut loc sau nu.
 		
 			a. Un server-core (Python) care va primi comanda de la front-end si va cauta intr-un
 			director de Views pentru a determina tipul de executie necesara.
