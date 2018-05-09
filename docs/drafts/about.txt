@@ -59,6 +59,7 @@ Coliw va fi impartita in doua mari module:
 					> update : acesta va face update pe instagram
 						>> user : pe profilul utilizatorului
 						>> story : pe story
+					> follow : acesta va da follow unui alte pagine
 				-wordpress :  va realiza comenzi in cadrul wordpress
 					> public : pentru a publica pe un blog
 					> -as HTMl : pentru a specifica formatul
