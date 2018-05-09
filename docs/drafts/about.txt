@@ -4,7 +4,7 @@ respectivul sir de caractere sub forma unei sintaxe in linia de comanda ce va su
 Aplicatia are ca scop interpretarea corecta si suporta inlantuiri de comenzi si pipe-uri ce vor duce la efectul dorit
 in urma executiei lor, lasand afisat, in istoricul interfetei, un output relevant.
 
-Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
+Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySQL.
 Coliw va fi impartita in doua mari module:
 
 	1. 		Interfata (front-end) ce va fi o consola statica, cuprinzand tot ecranul,
@@ -31,20 +31,19 @@ Coliw va fi impartita in doua mari module:
 			a. Un server-core (Python) care va primi comanda de la front-end si va cauta intr-un
 			director de Views pentru a determina tipul de executie necesara.
 			
-			b. Un set de views care, in urma interpretarii, va face executia comenzii dorite.
-				-login : care va face logarea in aplicatie cu un username si o parola
-				-register: care va face inregistrarea in aplicatie cu un username, o parola si un email
-				-ipinfo : care va afisa informatii legate de ip-ul curent/un ip extern
-				-weather : care va afisa starea vremii, atat intr-o locatie, regiune, cu sau fara detalii
-				-walpha : care va executa operatii matematice
+			b. Un set de Views care, in urma interpretarii, va face executia comenzii dorite:
+				- login   : va face logarea in aplicatie cu un username si o parola
+				- register: va face inregistrarea in aplicatie cu un username, o parola si un email
+				- ipinfo  : va afisa informatii legate de ip-ul curent/un ip extern
+				- weather : va afisa starea vremii, atat intr-o locatie, oras/regiune (cu sau fara detalii)
+				- walpha  : va executa operatii matematice
 			
-			c. O baza de date MySql pentru a stoca utilizatorii (acestia vor avea comanda de 
+			c. O baza de date MySQL pentru a stoca utilizatorii (acestia vor avea comanda de 
 			login si de register).
 			
-			d. Un modul Storage pentru a inregistra istoricul utilizatorului.
+			d. Un modul FileManager pentru a inregistra istoricul utilizatorului.
 			
-			e. Un sub-view numit Web care va fi un alt View care se va ocupa de comenzile in
-			ceea ce priveste activitatea web
+			e. Un sub-view numit Web, care va fi un alt View, care se va ocupa de comenzile activitatii web
 			
 				-slideshare : care va permite deschiderea prin server a unui fisier local/extern
 				fata de utilizator
