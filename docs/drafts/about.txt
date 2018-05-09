@@ -1,6 +1,7 @@
 CoLiW este o simpla aplicatie web conceputa sa preia siruri de caractere
-introduse in interfata (front-end) asemanatoare oricarui CLI si sa paseze
-acel sir mai departe back-end-ului care va parsa, analiza si procesa respectivul
+introduse in interfata (front-end) capabila sa paseze mai departe sirul 
+introdus de client catre partea de back-end care va parsa (printr-un parser custom),
+analiza si procesa respectivul
 sir de caractere sub forma unei sintaxe de comanda ce suporta comenzi mutiple
 si optiuni variabile in aceeasi maniera cu care s-ar confrunta un parser de
 argumente clasic. Scopul aplicatiei este sa interpreteze corect si sa suporte
