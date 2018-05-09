@@ -8,9 +8,9 @@ Aplicatia va folosi tehnologiile Python, HTML5, CSS, js/jQuery, Apache si MySql.
 Coliw va fi impartita in doua mari module:
 
 	1. 		Interfata (front-end) ce va fi o consola statica, cuprinzand tot ecranul,
-		ce va trimite comenzi catre API-ul (back-end) atunci cand este apasata tasta
-		<Enter>. In urma raspunsului se va afisa pe ecran raspunsul primit de la server
-		ca si raspuns la comanda introdusa.
+		ce va trimite comenzi catre un API (back-end) atunci cand este apasata tasta
+		<Enter>. In urma raspunsului se va afisa pe ecran un text de iesire relevant primit 
+		de la server, ca si raspuns la comanda introdusa.
 		
 			Interfata va suporta interactiuni similare oricarei console (ex: arrow-up/down
 		pentru rasfoirea in comenzile precedente si scroll pentru a naviga in istoric )
