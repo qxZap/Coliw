@@ -1,0 +1,165 @@
+body{
+	font-family: 'Poppins', sans-serif;
+	margin:0;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+:focus{
+	outline: none;
+}
+
+h1{
+	color: #fff;
+	font-size: 30px;
+}
+p{
+	color: #e8f2ff;
+}
+
+.right, .left{
+	width:50%;
+	height: 100vh;
+	float: left;
+}
+
+.left form{
+
+}
+
+.right{
+	background-color: #3a8aec;
+}
+
+.right, .left{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .content{
+	text-align: center;
+}
+
+.right .content, .left form{
+    width: 90%;
+    max-width: 500px;
+}
+
+label{
+	display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 2px;
+}
+
+input[type="email" i], input[type="text" i], textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 15px 10px;
+    border: 1px solid #F5F8F9;
+    background-color: #F5F8F9;
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus, textarea:focus { 
+	border: 1px solid #ccc;
+}
+
+button{
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3a8aec;
+    border-radius: 3px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+button:hover{
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ced7e0;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ced7e0;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ced7e0;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ced7e0;
+}
+
+@media (max-width: 1000px){
+
+.right, .left {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.right .content img{
+	width:150px;
+}
+
+h1{
+	margin:10px;
+}
+
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#EDEDED;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #3a5575;
+    display: block;
+    transition: 0.3s;
+    font-style: normal;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
