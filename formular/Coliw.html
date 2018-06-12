@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/astronomy-and-science/91/Astronomy_-_Science_07-512.png">
+	<title>COLIW</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="colivaStyle.css">
+</head>
+<body>
+	<content>
+            <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="AboutColiva.html">About</a>
+                    <a href="#">Console</a>
+                    <a href="index.html">Support</a>
+                  </div>
+                  <span style="font-size:50px;cursor:pointer; color:#EDEDED" onclick="openNav()">&#9776;</span>
+                  
+                  <script>
+                  function openNav() {
+                      document.getElementById("mySidenav").style.width = "250px";
+                  }
+                  
+                  function closeNav() {
+                      document.getElementById("mySidenav").style.width = "0";
+                  }
+                  </script>            
+            <section class="gabi">
+
+                    <h2 id="logo">COLIW</h2>
+                    <div class="info text-center">
+                            Ready to roll
+                        </div>
+                
+                        <div class="error text-center" role="alert">
+                            Error parsing arguments (10)
+                        </div>
+                
+                        <div class="loading text-center" role="alert">
+                            Loading ...
+                        </div>
+                
+                        <div class="success text-center" role="alert">
+                            Success!
+                        </div>
+                        <br>
+                        <br>
+
+            <label for="textarea">Message</label>
+            <textarea rows="15" id="textarea" placeholder="      Welcome to Coliw
+
+            Write  --help  for info." readonly></textarea>
+
+            <label for="command">Command</label>
+            <input type="text" name="command" placeholder="your command here">
+        </section>
+    </content>
+
+</body>
+</html>
