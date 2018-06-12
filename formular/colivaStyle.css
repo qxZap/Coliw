@@ -107,49 +107,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4c7f2', end
 	text-align:center;
 }
 
-.error {
-    width: 60%;
-    margin-left: 20%;
-    color:#EDEDED;
-	background-color:#3a8aec;
-    border-color:#EDEDED;
-    border-style: solid;
-    border-width:2px;
-	height: 50px;
-	text-align:center;
-	font-size:200%;
-	font-family: 'Poppins', sans-serif;
-	border-radius: 5px;
-}
-.loading {
-    width: 60%;
-    margin-left: 20%;
-    color:#EDEDED;
-	background-color:#3a8aec;
-    border-color:#EDEDED;
-    border-style: solid;
-    border-width:2px;
-	height: 50px;
-	text-align:center;
-	font-size:200%;
-	font-family: 'Poppins', sans-serif;
-	border-radius: 5px;
-}
-.success {
-    width: 60%;
-    margin-left: 20%;
-    color:#EDEDED;
-	background-color:#3a8aec;
-    border-color:#EDEDED;
-    border-style: solid;
-    border-width:2px;
-	height: 50px;
-	text-align:center;
-	font-size:200%;
-	font-family: 'Poppins', sans-serif;
-	border-radius: 5px;
-}
-
 .sidenav {
     height: 100%;
     width: 0;
@@ -203,3 +160,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4c7f2', end
         margin: 10px 0 10px;
       }
       
+      #rdr{
+      }
+
+      #err{
+        
+      }
+
+      #succ{
+        
+      }
+
+      #load{
+        
+      }
