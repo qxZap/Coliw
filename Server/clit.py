@@ -20,7 +20,7 @@ def Main():
  
         # messaga received from server
         data = s.recv(1024)
-        print('Received from the server :',str(data.decode('ascii')))
+        print(str(data.decode('ascii')))
  
     s.close()
  
