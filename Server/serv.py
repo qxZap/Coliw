@@ -4,6 +4,7 @@ from thread import start_new_thread
 from InstagramAPI import InstagramAPI
 import subprocess
 import flickrapi
+import requests
 
 HOST = '' 
 PORT = 6636 
@@ -230,11 +231,15 @@ def client_thread(conn,addr):
                         to_send="unknown web command"
                 else:
                     to_send="too few arguments known"
+        elif arguments[0]=='ipinfo':
+            #do ip stuff
+                 
+                 
         else:
             to_send=arguments[0]+" is not recognized"
             
         reply = to_send
-        conn.send(reply)
+        conn.send(reply.encode('ascii'))
     conn.close()
 
 while True:
