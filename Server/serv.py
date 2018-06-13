@@ -6,7 +6,18 @@ import subprocess
 import flickrapi
 import requests
 import MySQLdb
+import urllib2
 
+def getIDbyUsername(uname):
+    target_link="http://instagram.com/"+uname+"/"
+    response=urllib2.urlopen(target_link)
+    page_source=response.read()
+    string_start=page_source.find("profilePage_")+12
+    returnID=page_source[string_start:string_start+10]
+    if returnID[len(returnID)-1]=='"':
+        returnID=page_source[string_start:string_start+9]
+    return returnID
+	
 HOST = '' 
 PORT = 6636 
 
@@ -45,7 +56,10 @@ def client_thread(conn,addr):
             break
         arguments = data.split(" ")
         
-        if arguments[0] == "login":
+        if arguments[0]=='--help' or arguments[0]=='-h':
+            to_sen="CoLiW"
+        
+        elif arguments[0] == "login":
             if loggedIn==True:
                 to_send="You are already logged in"
                 
@@ -116,26 +130,69 @@ def client_thread(conn,addr):
             else:
                 if len(arguments)>1:
                     if arguments[1]=="instagram":
+                    #web instagram login username passwd
                         if arguments[2]=="login":
-                            userInstagram=InstagramAPI(arguments[3],arguments[4])
-                            if(userInstagram.login()):
-                                to_send="You`ve logged in through Instagram. Now you can use it as you desire"
-                                loggedInIG = True
+                            if len(arguments)>5:
+                                to_send="Too many arguments\nSyntax: web instagram login <username> <password>"
+                            elif len(arguments)<5:
+                                to_send="Too few arguments\nSyntax: web instagram login <username> <password>"
                             else:
-                                to_send="Wrong username/password. try again after you check them again"
+                                userInstagram=InstagramAPI(arguments[3],arguments[4])
+                                if(userInstagram.login()):
+                                    to_send="You`ve logged in through Instagram. Now you can use it as you desire"
+                                    loggedInIG = True
+                                else:
+                                    to_send="Wrong username/password. try again after you check them again"
+                        elif arguments[2]=='logout':
+                            if loggedInIG:
+                                loggedInIG=False
+                                userInstagram=None
+                                to_send="Logged out"
+                            else:
+                                to_send="You cannot log out if you`re not logged in"
+                            
+                            
 
                         elif arguments[2]=="follow":
                             if loggedInIG == True :
-                                returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
+                                #returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
+                                returnID=getIDbyUsername(arguments[3])
                                 if returnID[len(returnID)-1]=='"':
                                     returnID=returnID[:-1]
                                 userInstagram.follow(returnID)
+                                to_send="Now following "+arguments[3]
+                            else:
+                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                                
                         elif arguments[2] == "unfollow":
                             if loggedInIG==True:
-                                returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
+                                #returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
+                                returnID=getIDbyUsername(arguments[3])
                                 if returnID[len(returnID)-1]=='"':
                                     returnID=returnID[:-1]
                                 userInstagram.unfollow(returnID)
+                                to_send="Now not following "+arguments[3]+" anymore"
+                            else:
+                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                        elif arguments[2] == 'block':
+                            if loggedInIG==True:
+                                returnID=getIDbyUsername(arguments[3])
+                                if returnID[len(returnID)-1]=='"':
+                                    returnID=returnID[:-1]
+                                userInstagram.block(returnID)
+                                to_send=+arguments[3]+" been blocked"
+                            else:
+                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                        elif arguments[2] == 'unblock':
+                            if loggedInIG==True:
+                                returnID=getIDbyUsername(arguments[3])
+                                if returnID[len(returnID)-1]=='"':
+                                    returnID=returnID[:-1]
+                                userInstagram.unblock(returnID)
+                                to_send=+arguments[3]+" been unblocked"
+                            else:
+                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                                
                         elif arguments[2]=="upload":
                             if loggedInIG == True:
                                 if arguments[3]=="photo":
@@ -143,6 +200,8 @@ def client_thread(conn,addr):
                                     for i in arguments[4:]:
                                         caption+=str(i)+" "
                                     uploadPhoto(arguments[4], caption)
+                        elif arguments[2]=='-h':
+                            to_send="Instagram API in Coliw\n\n\tsyntax: web instagram <follow/unfollow/login/block/unblock> <username>"
                     elif arguments[1] == "flickr":
                         continueT=True
                         index_to_start=0
@@ -287,7 +346,8 @@ def client_thread(conn,addr):
                  
         else:
             to_send=arguments[0]+" is not recognized"
-            
+        if loggedIn:
+            print subprocess.check_output( [sys.executable, "addCMD.py", username,data, to_send])
         reply = to_send
         conn.send(reply.encode('ascii'))
     conn.close()
