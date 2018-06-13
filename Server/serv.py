@@ -99,15 +99,29 @@ def client_thread(conn,addr):
                         #web flickr <tag>
                         elif len(arguments)==3:
                             if arguments[2]=='-h':
-                                to_send="Help"
+                                to_send="\nFlickr api\nSyntax: web flickr <keyword> <options>\n\n\t-i start index ( 0 as default )\n\t-n number of photos ( 1 as default )"
                                 continueT=False
                             else:
                                 index_to_start=1
                                 number_of_photos=1
                             
                         elif len(arguments)==5:
-                            continueT=False
-                            to_send="invalit syntax"
+                            if arguments[3]=='-i':
+                                if arguments[4].isdigit():
+                                    index_to_start=int(arguments[4])
+                                else:
+                                    continueT=False
+                                    to_send=argument[4]+" is not a number"
+                        
+                            elif arguments[3]=='-n':
+                                if arguments[4].isdigit():
+                                    number_of_photos=int(arguments[4])
+                                else:
+                                    continueT=False
+                                    to_send=argument[4]+" is not a number"
+                        
+                        
+                            
                         elif len(arguments)==6:
                             if arguments[3]=='-in':
                                 
@@ -169,28 +183,42 @@ def client_thread(conn,addr):
                         
                         
                         else:
-                            to_send="Too many arguments given"
+                            to_send="Too many arguments given/wrong syntax"
                             continueT=False
                         if continueT:
                             #to_send="Right syntax/ you wanna search "+arguments[2]+" index="+str(index_to_start)+" no="+str(number_of_photos)
                             startUP=0
                             startDOWN=0
+                            if number_of_photos==0:
+                                number_of_photos=1
                             if number_of_photos==1 and index_to_start==1:
                                 startUP=0
                                 startDOWN=1
                             elif index_to_start==0 and number_of_photos>1:
+                                startUP=0
+                                startDOWN=number_of_photos
+                            elif index_to_start>1 and number_of_photos==1:
+                                startUP=index_to_start
+                                startDOWN=index_to_start+1
+                            elif index_to_start>1 and number_of_photos>1:
+                                startUP=index_to_start
+                                startDOWN=startUP+number_of_photos
+                            elif index_to_start==1 and number_of_photos>1:
+                                startUP=index_to_start
+                                startDOWN=number_of_photos+1
+                            elif index_to_start==0 and number_of_photos==1:
+                                startUP=0
+                                startDOWN=1
                                 
                             
                                 
                             
                             
-                            if(index_to_start>1&number_of_photos>1):
-                                number_of_photos=number_of_photos+index_to_start+1
                                 
                             flickr = flickrapi.FlickrAPI('e57cfa37f00d7a9a5d7fac7e37ebcbb5', '00751b0c7b65ba7a',format='parsed-json')
                             extras = 'url_sq,url_t,url_s,url_q,url_m,url_n,url_z,url_c,url_l,url_o'
                             links = ""
-                            cats = flickr.photos.search(text=arguments[2], per_page=number_of_photos+1, extras=extras)
+                            cats = flickr.photos.search(text=arguments[2], per_page=startDOWN+startUP, extras=extras)
                                 
                             for i in range(startUP, startDOWN):
                                 photos = cats['photos']['photo'][i]['url_m']
@@ -216,5 +244,3 @@ while True:
     start_new_thread(client_thread, (conn,addr))
 
 s.close()
-
-Scrie un mesaj...
