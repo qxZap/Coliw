@@ -5,6 +5,7 @@ from InstagramAPI import InstagramAPI
 import subprocess
 import flickrapi
 import requests
+import MySQLdb
 
 HOST = '' 
 PORT = 6636 
@@ -32,6 +33,7 @@ def client_thread(conn,addr):
     loggedIn = False
     loggedInIG = False
     userInstagram= None
+    username=None
     while True:
         try:
             data = conn.recv(1024)
@@ -44,18 +46,69 @@ def client_thread(conn,addr):
         arguments = data.split(" ")
         
         if arguments[0] == "login":
-            flag = subprocess.check_output([sys.executable, "login.py", arguments[1], arguments[2]])
-            if flag == '0':
-                to_send = "Error with login creditals. Check again your user/password"
+            if loggedIn==True:
+                to_send="You are already logged in"
+                
             else:
-                to_send = "Login sucessfull"
-                loggedIn = True
+                if len(arguments)<3:
+                    to_send="Too few arguments!\nSyntax: login <username> <password>"
+                elif len(arguments)>3:
+                    to_send="Too many arguments!\nSyntax: login <username> <password>"
+                else:
+                    db = MySQLdb.connect(host="localhost", user="root", passwd="", db="aplicatiebd")
+                    cur = db.cursor()
+                    stringalau="SELECT password FROM USERS WHERE username ='"+arguments[1]+"'"
+                    cur.execute(stringalau)
+                    if arguments[2]==cur.fetchall()[0][0]:
+                        loggedIn=True
+                        username=arguments[1]
+                        to_send="Login sucessfull"
+                    else:
+                        to_send="Wrong creditals"
+                
+        
+        
+            #flag = subprocess.check_output([sys.executable, "login.py", arguments[1], arguments[2]])
+            
+            #if flag == '1\n':
+            #    to_send = "Login sucessfull"
+            #    loggedIn = True
+            #else:
+            #    to_send = "Error with login creditals. Check again your user/password"
         elif arguments[0] == "register":
-            flag = subprocess.check_output([sys.executable, "register.py", arguments[1], arguments[2], arguments[3]])
-            if flag == "True\n":
-                to_send = "You have been registered!"
+            if loggedIn==True:
+                to_send="You cannot register while you are logged in already"
             else:
-                to_send = "There is someone called " + arguments[1]
+                if len(arguments)<4:
+                    to_send="Too few arguments!\nSyntax: register <username> <password> <email>"
+                elif len(arguments)>4:
+                    to_send="Too many arguments!\nSyntax: register <username> <password> <email>"
+                else:
+                    db = MySQLdb.connect(host="localhost", user="root", passwd="", db="aplicatiebd")
+                    cur = db.cursor()
+                    stringalau="SELECT id FROM USERS WHERE username ='"+arguments[1]+"'"
+                    cur.execute(stringalau)
+                    if len(cur.fetchall())>0:
+                        to_send="There is already someone called "+arguments[1]
+                    else:
+                        stringalau="INSERT INTO users(username,password,email) VALUES('"+arguments[1]+"','"+arguments[2]+"','"+arguments[3]+"');"
+                        cur.execute(stringalau)
+                        db.commit()
+                        to_send="You`ve been registred and now you`re logged in"
+                        loggedIn=True
+                        username=arguments[1]
+        elif arguments[0]=='logout':
+            to_send="Logged out"
+            loggedIn=False
+                    
+        
+        
+        
+            #flag = subprocess.check_output([sys.executable, "register.py", arguments[1], arguments[2], arguments[3]])
+            #if flag == "True\n":
+            #    to_send = "You have been registered!"
+            #else:
+            #    to_send = "There is someone called " + arguments[1]
                 
         elif arguments[0]=="web":
             if loggedIn==False:
@@ -231,9 +284,6 @@ def client_thread(conn,addr):
                         to_send="unknown web command"
                 else:
                     to_send="too few arguments known"
-        elif arguments[0]=='ipinfo':
-            #do ip stuff
-                 
                  
         else:
             to_send=arguments[0]+" is not recognized"
