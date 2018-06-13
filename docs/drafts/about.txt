@@ -35,8 +35,6 @@ Coliw va fi impartita in doua mari module:
 				- login   : va face logarea in aplicatie cu un username si o parola
 				- register: va face inregistrarea in aplicatie cu un username, o parola si un email
 				- ipinfo  : va afisa informatii legate de ip-ul curent/un ip extern
-				- weather : va afisa starea vremii, atat intr-o locatie, oras/regiune (cu sau fara detalii)
-				- walpha  : va executa operatii matematice
 			
 			c. O baza de date MySQL pentru a stoca utilizatorii (acestia vor avea comanda de 
 			login si de register).
@@ -45,17 +43,6 @@ Coliw va fi impartita in doua mari module:
 			
 			e. Un sub-view numit Web, care va fi un alt View, care se va ocupa de comenzile activitatii web
 			
-				- slideshare : va permite deschiderea prin server a unui fisier local/extern
-				fata de utilizator
-					> upload   : pentru a deschide ceva din computerul utilizatorului prin server
-					> external : pentru a deschide ceva in functie de url
-				- twitter    : va realiza comenzi in cadrul twitter
-					> follow   : si va da follow unui utilizator
-					> unfollow : si va da unfollow unui utilizator
-					> tweet    : si va aduga un nou tweet
-				- gmail      : va realiza comenzi in cadrul gmail
-					> -tag     : pentru a cauta tag-uri cu un anumit nume
-					> -since   : pentru a determina incepand cu ce data sa caute
 				- flickr     : va realiza comenzi in cadrul flickr
 					> -tag     : va cauta poza dupa un anumit tag
 					> -first   : pentru a lua prima cautare
@@ -65,9 +52,6 @@ Coliw va fi impartita in doua mari module:
 						>> story : pe story
 					> follow   : acesta va da follow unei alte pagini/unui alt utilizator
 					> unfollow : acesta va da unfollow unei alte pagini/unui alt utilizator
-				-wordpress   :  va realiza comenzi in cadrul wordpress
-					> public   : pentru a publica pe un blog
-					> -as HTMl : pentru a specifica formatul
 						
 			f. Un modul de utilizare a fisierelor pentru utilizatorii cu cont. Utilizatorii fara
 			cont nu vor avea acces la utilizarea fisierelor, iar comenzile care implica acest caz
