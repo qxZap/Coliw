@@ -57,7 +57,7 @@ def client_thread(conn,addr):
         arguments = data.split(" ")
         
         if arguments[0]=='--help' or arguments[0]=='-h':
-            to_sen="CoLiW"
+            to_send="CoLiW\n\nCommands:\n\tlogin\n\tlogout\n\tregister\n\tweb module\n\thistory"
         
         elif arguments[0] == "login":
             if loggedIn==True:
@@ -89,6 +89,42 @@ def client_thread(conn,addr):
             #    loggedIn = True
             #else:
             #    to_send = "Error with login creditals. Check again your user/password"
+        elif arguments[0]=='history':
+            if loggedIn:
+                if len(arguments)==2:
+                    if arguments[1]=='-h':
+                        to_send="Hystory\nBasicly, it prints command history of the user\n\n\t-h prints this message\n\t-o prints output also (rather not)\n\t-c clears the history"
+                    elif arguments[1]=='-o':
+                        db = MySQLdb.connect(host="localhost", user="root", passwd="", db="aplicatiebd")
+                        cur=db.cursor()
+                        stringalau="SELECT command,output from history where username='"+username+"'"
+                        cur.execute(stringalau)
+                        output=cur.fetchall()
+                        sortedOutput=list(set(output))
+                        to_send=""
+                        for i in sortedOutput:
+                            to_send=to_send+i[0]+"\t\t"+i[1]+"\n"
+                    elif arguments[1]=='-c':
+                        flag=subprocess.check_output( [sys.executable, "clearHistory.py", username])
+                        to_send="History cleared"
+                    else:
+                        to_send="Expected -o -h or -c and recieved"+arguments[1]
+                        
+                elif len(arguments)==1:
+                    db = MySQLdb.connect(host="localhost", user="root", passwd="", db="aplicatiebd")
+                    cur=db.cursor()
+                    stringalau="SELECT command from history where username='"+username+"'"
+                    cur.execute(stringalau)
+                    output=cur.fetchall()
+                    sortedOutput=list(set(output))
+                    to_send=""
+                    for i in sortedOutput:
+                        to_send=to_send+i[0]+"\n"
+                else:
+                    to_send="Wrong syntax\nType in 'history -h' for more info"
+            else:
+                to_send="You cannot use this command if you`re not logged in"
+            
         elif arguments[0] == "register":
             if loggedIn==True:
                 to_send="You cannot register while you are logged in already"
@@ -129,79 +165,84 @@ def client_thread(conn,addr):
                 to_send="You have to be logged in to use web module."
             else:
                 if len(arguments)>1:
-                    if arguments[1]=="instagram":
-                    #web instagram login username passwd
-                        if arguments[2]=="login":
-                            if len(arguments)>5:
-                                to_send="Too many arguments\nSyntax: web instagram login <username> <password>"
-                            elif len(arguments)<5:
-                                to_send="Too few arguments\nSyntax: web instagram login <username> <password>"
-                            else:
-                                userInstagram=InstagramAPI(arguments[3],arguments[4])
-                                if(userInstagram.login()):
-                                    to_send="You`ve logged in through Instagram. Now you can use it as you desire"
-                                    loggedInIG = True
+                    if arguments[1]=='-h':
+                        to_send="CoLiW Web Module\n\tinstagram API\n\tflickr API"
+                    elif arguments[1]=="instagram":
+                        if len(arguments)==2:
+                            to_send="Invalid syntax.\nType in web instagram -h"
+                        else:
+                        #web instagram login username passwd
+                            if arguments[2]=="login":
+                                if len(arguments)>5:
+                                    to_send="Too many arguments\nSyntax: web instagram login <username> <password>"
+                                elif len(arguments)<5:
+                                    to_send="Too few arguments\nSyntax: web instagram login <username> <password>"
                                 else:
-                                    to_send="Wrong username/password. try again after you check them again"
-                        elif arguments[2]=='logout':
-                            if loggedInIG:
-                                loggedInIG=False
-                                userInstagram=None
-                                to_send="Logged out"
-                            else:
-                                to_send="You cannot log out if you`re not logged in"
-                            
-                            
+                                    userInstagram=InstagramAPI(arguments[3],arguments[4])
+                                    if(userInstagram.login()):
+                                        to_send="You`ve logged in through Instagram. Now you can use it as you desire"
+                                        loggedInIG = True
+                                    else:
+                                        to_send="Wrong username/password. try again after you check them again"
+                            elif arguments[2]=='logout':
+                                if loggedInIG:
+                                    loggedInIG=False
+                                    userInstagram=None
+                                    to_send="Logged out"
+                                else:
+                                    to_send="You cannot log out if you`re not logged in"
+                                
+                                
 
-                        elif arguments[2]=="follow":
-                            if loggedInIG == True :
-                                #returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
-                                returnID=getIDbyUsername(arguments[3])
-                                if returnID[len(returnID)-1]=='"':
-                                    returnID=returnID[:-1]
-                                userInstagram.follow(returnID)
-                                to_send="Now following "+arguments[3]
-                            else:
-                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
-                                
-                        elif arguments[2] == "unfollow":
-                            if loggedInIG==True:
-                                #returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
-                                returnID=getIDbyUsername(arguments[3])
-                                if returnID[len(returnID)-1]=='"':
-                                    returnID=returnID[:-1]
-                                userInstagram.unfollow(returnID)
-                                to_send="Now not following "+arguments[3]+" anymore"
-                            else:
-                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
-                        elif arguments[2] == 'block':
-                            if loggedInIG==True:
-                                returnID=getIDbyUsername(arguments[3])
-                                if returnID[len(returnID)-1]=='"':
-                                    returnID=returnID[:-1]
-                                userInstagram.block(returnID)
-                                to_send=+arguments[3]+" been blocked"
-                            else:
-                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
-                        elif arguments[2] == 'unblock':
-                            if loggedInIG==True:
-                                returnID=getIDbyUsername(arguments[3])
-                                if returnID[len(returnID)-1]=='"':
-                                    returnID=returnID[:-1]
-                                userInstagram.unblock(returnID)
-                                to_send=+arguments[3]+" been unblocked"
-                            else:
-                                to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
-                                
-                        elif arguments[2]=="upload":
-                            if loggedInIG == True:
-                                if arguments[3]=="photo":
-                                    caption=""
-                                    for i in arguments[4:]:
-                                        caption+=str(i)+" "
-                                    uploadPhoto(arguments[4], caption)
-                        elif arguments[2]=='-h':
-                            to_send="Instagram API in Coliw\n\n\tsyntax: web instagram <follow/unfollow/login/block/unblock> <username>"
+                            elif arguments[2]=="follow":
+                                if loggedInIG == True :
+                                    #returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
+                                    returnID=getIDbyUsername(arguments[3])
+                                    if returnID[len(returnID)-1]=='"':
+                                        returnID=returnID[:-1]
+                                    userInstagram.follow(returnID)
+                                    to_send="Now following "+arguments[3]
+                                else:
+                                    to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                                    
+                            elif arguments[2] == "unfollow":
+                                if loggedInIG==True:
+                                    #returnID = subprocess.check_output( [sys.executable, "getIDbyUsername.py", arguments[3]])
+                                    returnID=getIDbyUsername(arguments[3])
+                                    if returnID[len(returnID)-1]=='"':
+                                        returnID=returnID[:-1]
+                                    userInstagram.unfollow(returnID)
+                                    to_send="Now not following "+arguments[3]+" anymore"
+                                else:
+                                    to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                            elif arguments[2] == 'block':
+                                if loggedInIG==True:
+                                    returnID=getIDbyUsername(arguments[3])
+                                    if returnID[len(returnID)-1]=='"':
+                                        returnID=returnID[:-1]
+                                    userInstagram.block(returnID)
+                                    to_send=+arguments[3]+" been blocked"
+                                else:
+                                    to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                            elif arguments[2] == 'unblock':
+                                if loggedInIG==True:
+                                    returnID=getIDbyUsername(arguments[3])
+                                    if returnID[len(returnID)-1]=='"':
+                                        returnID=returnID[:-1]
+                                    userInstagram.unblock(returnID)
+                                    to_send=+arguments[3]+" been unblocked"
+                                else:
+                                    to_send="You have to be logged in with instagram\nUse web instagram -h for more info"
+                                    
+                            elif arguments[2]=="upload":
+                                if loggedInIG == True:
+                                    if arguments[3]=="photo":
+                                        caption=""
+                                        for i in arguments[4:]:
+                                            caption+=str(i)+" "
+                                        uploadPhoto(arguments[4], caption)
+                            elif arguments[2]=='-h':
+                                to_send="Instagram API in Coliw\n\n\tsyntax: web instagram <follow/unfollow/login/block/unblock> <username>"
                     elif arguments[1] == "flickr":
                         continueT=True
                         index_to_start=0
