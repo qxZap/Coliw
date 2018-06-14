@@ -40,4 +40,4 @@ the debugger can be found on /Server/clit.py
 * Authors:
   + Milea Mihai-Cristian <mihai.milea@info.uaic.ro> //currently working on
   + Gabriela Macovei <gabriela.macovei@info.uaic.ro> //currently working on
-  + Roibu Radu <radu.roibu@info.uaic.ro> //currenty working on
+  + Roibu Radu-Marian <radu.roibu@info.uaic.ro> //currenty working on
