@@ -1,5 +1,9 @@
-<!DOCTYPE html>
+<?php
+session_name ("costica");
+session_start();
 
+?>
+<!DOCTYPE html>
 <script src= "https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <html>
@@ -11,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="colivaStyle.css">
 </head>
-<body>
+<body id="root">
 	<content>
             <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -80,11 +84,10 @@ $('#dataSended').submit(function(event) {
 	event.preventDefault();
 
 var History=document.getElementById('input_area').value;
-
 	$.ajax({
 		data: {'x':History},
 		url:"dataSender.php",
-		type:'Get',
+		type:'POST',
 		success: function(data) {
 			document.getElementById("textarea").value += History + '\n';
 			document.getElementById("textarea").value += data + '\n';
@@ -92,5 +95,6 @@ var History=document.getElementById('input_area').value;
 
 	});
 });
+
 </script>
 </html>
