@@ -39,5 +39,5 @@ the debugger can be found on /Server/clit.py
 * License: MIT
 * Authors:
   + Milea Mihai-Cristian <mihai.milea@info.uaic.ro> //currently working on
-  + Gabriela Macovei <gabriela.macovrei@info.uaic.ro> //currently working on
+  + Gabriela Macovei <gabriela.macovei@info.uaic.ro> //currently working on
   + Roibu Radu <radu.roibu@info.uaic.ro> //currenty working on
