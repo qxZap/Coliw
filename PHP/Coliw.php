@@ -26,6 +26,8 @@ session_start();
                   <span style="font-size:50px;cursor:pointer; float: left; color:#EDEDED" onclick="openNav()">&#9776;</span>
                   
                   <script>
+                  var commandHistory = [];
+                  var indexC=0;
                   function openNav() {
                       document.getElementById("mySidenav").style.width = "250px";
                   }
@@ -70,7 +72,28 @@ session_start();
 			elem.onkeyup = function(e){
 				if(e.keyCode == 13){
 					document.getElementById("send_command").click();
+                    commandHistory.push(document.getElementById('input_area').value);
+                    indexC++;
+                    document.getElementById("input_area").value=" ";
 				}
+                if(e.keyCode==38)
+                {
+                    if(indexC>0)
+                    {
+                        indexC--;
+                        document.getElementById("input_area").value=commandHistory[indexC];
+                    }
+                    
+                }
+                if(e.keyCode==40)
+                {
+                    if(indexC+1<=commandHistory.length)
+                    {
+                        indexC++;
+                        document.getElementById("input_area").value=commandHistory[indexC];
+                    }
+                    
+                }
 			}
 			</script>
 			
@@ -91,6 +114,7 @@ var History=document.getElementById('input_area').value;
 		success: function(data) {
 			document.getElementById("textarea").value += History + '\n';
 			document.getElementById("textarea").value += data + '\n';
+            
 			}
 
 	});
