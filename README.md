@@ -16,7 +16,7 @@ files can be found in /PHP
 ```
 3.Add the mySQL database to a MySQL server
 ```bash
-database can be found in DB
+database can be found in /DB/Database.sql
 ```
 Run server:
 ```bash
