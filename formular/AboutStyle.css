@@ -1,13 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 
+html { overflow-y: scroll; }
+body { position: absolute;
+display:block;}
+
 section{
 	font-family: 'Poppins', sans-serif;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 50%;
+    height: 40%;
     padding-bottom: 15%;
                     background: rgba(164,199,242,1);
 background: -moz-linear-gradient(45deg, rgba(164,199,242,1) 0%, rgba(58,138,236,1) 100%);
@@ -64,20 +67,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4c7f2', end
   .sidenav a {font-size: 18px;}
 }
 
-#logo {
-    font-family: 'Calibri', Bold;
-    color: #EDEDED;
-    text-decoration: none;
-    font-size: 500%;
-    letter-spacing: -3px;
-    text-align: center;
-    position: fixed;
-    top:0;
-    left: 35%;
-    right:35%;
-  }
-  
-  .gabi {
+.gabi {
     width: 100%;
     height: 100%;
     padding: 30px;
@@ -95,7 +85,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4c7f2', end
 
 img{
     border-radius: 50%;
-    height: 15%;
     width: 15%;
     filter: grayscale(100%);
     float: left;
@@ -104,10 +93,37 @@ img{
 
 .poze{
     display: inline;
-    align-content: center;
-    position: fixed;
-    top:40%;
-    left: 13%;
-    right:13%;
+}
+   
+.bla{
+    float: right;
 
+}
+.misto{
+    max-width:100%;
+    margin-top:4%;
+    margin-bottom:0;
+    font-size:70px;
+    font-family:  'Calibri', Bold;
+    color: #EDEDED;
+    letter-spacing: -3px;
+    text-align: center;
+}
+
+.clasa{
+    width:100%;
+    height: 74%;
+}
+
+.descriere{
+    text-align: center;
+    color:#3a8aec;
+    margin-top: 50%;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    display: block;
+    padding-left: 10%;
+    padding-right:10%;
+    height:100%;
+    font-size: 17px;
 }
