@@ -1,7 +1,6 @@
 <?php
 session_name ("costica");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <script src= "https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -21,7 +20,7 @@ session_start();
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="AboutColiva.html">About</a>
                     <a href="#">Console</a>
-                    <a href="index.html">Support</a>
+                    <a href="Support.php">Support</a>
                   </div>
                   <span style="font-size:50px;cursor:pointer; float: left; color:#EDEDED" onclick="openNav()">&#9776;</span>
                   
@@ -48,7 +47,6 @@ session_start();
             <label for="textarea">Message</label>
             <form name="testform" id="dataSended">
             <textarea name="descript" rows="15" id="textarea" placeholder="      Welcome to Coliw
-
             Write  --help  for info." readonly></textarea>
             <label for="command">Command</label>
 			
@@ -102,10 +100,8 @@ session_start();
 
 </body>
 <script>
-
 $('#dataSended').submit(function(event) {
 	event.preventDefault();
-
 var History=document.getElementById('input_area').value;
 	$.ajax({
 		data: {'x':History},
@@ -116,9 +112,7 @@ var History=document.getElementById('input_area').value;
 			document.getElementById("textarea").value += data + '\n';
             
 			}
-
 	});
 });
-
 </script>
 </html>

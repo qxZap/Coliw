@@ -1,6 +1,6 @@
 <?php
 class login{
-    public $host='192.168.0.145';
+    public $host='192.168.43.232';
     public $port='6636';
 
     public $socket;
